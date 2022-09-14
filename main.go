@@ -37,6 +37,10 @@ func main() {
 	var r httpResponse
 	json.Unmarshal(body, &r)
 
-	fmt.Printf("В Москве %v градусов", r.Fact["temp"])
+	if r.Fact != nil {
+		fmt.Printf("Температура в Москве %v ℃", r.Fact["temp"])
+	} else {
+		fmt.Print("Не удалось получить ответ от api, скорее всего не указан api key")
+	}
 
 }
